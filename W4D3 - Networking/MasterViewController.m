@@ -10,7 +10,7 @@
 #import "DetailViewController.h"
 #import "Repos.h"
 
-@interface MasterViewController ()
+@interface MasterViewController () <NSURLSessionDelegate, NSURLSessionDownloadDelegate>
 
 @property NSMutableArray *objects;
 @end
@@ -30,46 +30,34 @@
 //    self.navigationItem.rightBarButtonItem = addButton;
     
     
-    NSString *urlString = @"https://api.github.com/users/dmathewwws/repos";
+    NSString *urlString = @"http://cdn.tutsplus.com/mobile/uploads/2013/12/sample.jpg";
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
         
-        if (!error) {
-            
-            NSError *jsonError = nil;
-            
-            NSArray *repos = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-            
-            NSMutableArray *reposArray = [NSMutableArray array];
-            
-            for (NSDictionary *eachRepo in repos){
-                
-                NSString *name = eachRepo[@"name"];
-                NSURL *url = [NSURL URLWithString:eachRepo[@"html_url"]];
-                NSNumber *size = eachRepo[@"size"];
-
-                Repos* aRepo = [[Repos alloc] initWithName:name url:url size:size];
-                
-                //NSLog(@"aRepo is %@", aRepo.name);
-                
-                [reposArray addObject:aRepo];
-                
-            }
-            
-            self.objects = reposArray;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                [self.tableView reloadData];
-                
-            });
-            
-        }
+        NSLog(@"location is %@", location);
         
     }];
+                                              
+    [downloadTask resume];
     
-    [dataTask resume];
+}
+
+-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location{
+    
+    
+}
+
+
+-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes {
+    
+    
+}
+
+
+-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite{
+    
     
 }
 
