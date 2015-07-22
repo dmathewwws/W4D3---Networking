@@ -8,6 +8,7 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "Repos.h"
 
 @interface MasterViewController ()
 
@@ -27,6 +28,49 @@
 
     //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
 //    self.navigationItem.rightBarButtonItem = addButton;
+    
+    
+    NSString *urlString = @"https://api.github.com/users/dmathewwws/repos";
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        if (!error) {
+            
+            NSError *jsonError = nil;
+            
+            NSArray *repos = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+            
+            NSMutableArray *reposArray = [NSMutableArray array];
+            
+            for (NSDictionary *eachRepo in repos){
+                
+                NSString *name = eachRepo[@"name"];
+                NSURL *url = [NSURL URLWithString:eachRepo[@"html_url"]];
+                NSNumber *size = eachRepo[@"size"];
+
+                Repos* aRepo = [[Repos alloc] initWithName:name url:url size:size];
+                
+                //NSLog(@"aRepo is %@", aRepo.name);
+                
+                [reposArray addObject:aRepo];
+                
+            }
+            
+            self.objects = reposArray;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.tableView reloadData];
+                
+            });
+            
+        }
+        
+    }];
+    
+    [dataTask resume];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,8 +110,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    Repos *repo = self.objects[indexPath.row];
+    cell.textLabel.text = repo.name;
     return cell;
 }
 

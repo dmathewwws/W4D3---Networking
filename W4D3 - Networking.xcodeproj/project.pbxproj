@@ -15,6 +15,7 @@
 		122605441B5FF82E006EE0A1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 122605431B5FF82E006EE0A1 /* Images.xcassets */; };
 		122605471B5FF82E006EE0A1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 122605451B5FF82E006EE0A1 /* LaunchScreen.xib */; };
 		122605531B5FF82E006EE0A1 /* W4D3___NetworkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 122605521B5FF82E006EE0A1 /* W4D3___NetworkingTests.m */; };
+		12B90DDB1B5FFC5600796186 /* Repos.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B90DDA1B5FFC5600796186 /* Repos.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		1226054C1B5FF82E006EE0A1 /* W4D3 - NetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "W4D3 - NetworkingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		122605511B5FF82E006EE0A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		122605521B5FF82E006EE0A1 /* W4D3___NetworkingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "W4D3___NetworkingTests.m"; sourceTree = "<group>"; };
+		12B90DD91B5FFC5600796186 /* Repos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repos.h; sourceTree = "<group>"; };
+		12B90DDA1B5FFC5600796186 /* Repos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repos.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,8 @@
 				1226053B1B5FF82E006EE0A1 /* MasterViewController.m */,
 				1226053D1B5FF82E006EE0A1 /* DetailViewController.h */,
 				1226053E1B5FF82E006EE0A1 /* DetailViewController.m */,
+				12B90DD91B5FFC5600796186 /* Repos.h */,
+				12B90DDA1B5FFC5600796186 /* Repos.m */,
 				122605401B5FF82E006EE0A1 /* Main.storyboard */,
 				122605431B5FF82E006EE0A1 /* Images.xcassets */,
 				122605451B5FF82E006EE0A1 /* LaunchScreen.xib */,
@@ -228,6 +233,7 @@
 				1226053C1B5FF82E006EE0A1 /* MasterViewController.m in Sources */,
 				122605361B5FF82E006EE0A1 /* main.m in Sources */,
 				1226053F1B5FF82E006EE0A1 /* DetailViewController.m in Sources */,
+				12B90DDB1B5FFC5600796186 /* Repos.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +428,7 @@
 				122605581B5FF82E006EE0A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		122605591B5FF82E006EE0A1 /* Build configuration list for PBXNativeTarget "W4D3 - NetworkingTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +437,7 @@
 				1226055B1B5FF82E006EE0A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
