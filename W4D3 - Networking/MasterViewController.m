@@ -30,18 +30,22 @@
 //    self.navigationItem.rightBarButtonItem = addButton;
     
     
-    NSString *urlString = @"http://cdn.tutsplus.com/mobile/uploads/2013/12/sample.jpg";
-    
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
-    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-        
-        NSLog(@"location is %@", location);
-        
-    }];
-                                              
-    [downloadTask resume];
-    
+//    NSString *urlString = @"http://cdn.tutsplus.com/mobile/uploads/2013/12/sample.jpg";
+//    
+//    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
+//    
+//    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        
+//        //
+//        
+//        NSLog(@"Done downloading, location is %@", location);
+//        
+//        
+//    }];
+//    
+//    [downloadTask resume];
+//    
 }
 
 -(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location{
